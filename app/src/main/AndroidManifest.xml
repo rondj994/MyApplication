@@ -23,7 +23,9 @@
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Activities.CatalogoActivity"></activity>
+        <activity android:name=".Activities.CatalogoActivity" />
+        <activity android:name=".Activities.BenvenutoCliente" />
+        <activity android:name=".Activities.BenvenutoAmministratore"></activity>
     </application>
 
 </manifest>
