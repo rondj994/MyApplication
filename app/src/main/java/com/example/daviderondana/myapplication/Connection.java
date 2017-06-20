@@ -11,29 +11,33 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class Connection{
+public class Connection {
     String utente, password, action, booksString;
     ArrayList<JSONObject> books;
     ProgressBar progressBar;
-    String indirizzoIp="192.168.0.124";
+    String indirizzoIp = "192.168.0.124";
 
-    public Connection() {}
+    public Connection() {
+    }
 
-    public void setAction(String action){
+    public void setAction(String action) {
         this.action = action;
     }
 
-    public void setUtente(String utente){
+    public void setUtente(String utente) {
         this.utente = utente;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -53,7 +57,7 @@ public class Connection{
             BufferedReader reader = null;
 
             try {
-                URL url = new URL("http://"+indirizzoIp+":8080/Controller/Controller");
+                URL url = new URL("http://" + indirizzoIp + ":8080/WebApplication1/service");
                 DataOutputStream dataOutputStream;
                 InputStream inputStream;
                 String parameter;
@@ -66,7 +70,6 @@ public class Connection{
                 urlConnection.setRequestProperty("utente", utente);
                 urlConnection.setRequestProperty("password", password);
                 urlConnection.setConnectTimeout(7000);
-                System.out.println("2");
 
                 dataOutputStream = new DataOutputStream(urlConnection.getOutputStream());
                 parameter = "action=" + URLEncoder.encode(action, "UTF-8") +
@@ -101,7 +104,7 @@ public class Connection{
                 Log.e(LOG_TAG, "Error ", e);
                 System.out.println(e.getMessage());
                 return null;
-            }finally {
+            } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
                 }
@@ -116,7 +119,6 @@ public class Connection{
             return booksString;
         }
     }
-
 
     public String start() throws ExecutionException, InterruptedException {
         ManageRequest manage = new ManageRequest();

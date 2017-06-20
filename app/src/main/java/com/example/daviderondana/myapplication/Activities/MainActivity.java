@@ -7,10 +7,7 @@ import android.widget.Button;
 
 import com.example.daviderondana.myapplication.ClickListeners.CatalogoClickListener;
 import com.example.daviderondana.myapplication.ClickListeners.LoginClickListener;
-import com.example.daviderondana.myapplication.Connection;
 import com.example.daviderondana.myapplication.R;
-
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
         // associo il click listener al bottone
         loginButton.setOnClickListener(loginClickListener);
 
-
-
         // identifico il bottone dal layout
-
         Button catalogoButton = (Button) findViewById(R.id.catalogo_button);
 
         // creo un click listener
@@ -43,18 +37,5 @@ public class MainActivity extends AppCompatActivity {
 
         // associo il click listener al bottone
         catalogoButton.setOnClickListener(catalogoClickListener);
-
-        Connection connection = new Connection();
-        connection.setUtente("app");
-        connection.setPassword("app");
-        connection.setAction("");
-        try {
-            connection.start();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 }
