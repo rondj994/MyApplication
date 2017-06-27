@@ -1,6 +1,8 @@
 package com.example.daviderondana.myapplication.Model;
 
-public class Utente {
+import java.io.Serializable;
+
+public class Utente implements Serializable {
     private String account;
     private String password;
     private String ruolo;
