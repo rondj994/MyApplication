@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,10 +17,12 @@ import java.util.List;
 public class LibriAdapter extends BaseAdapter {
     private List<Libro> libri;
     private Activity activity;
+    private Boolean logged;
 
-    public LibriAdapter(List<Libro> libri, Activity activity) {
+    public LibriAdapter(List<Libro> libri, Activity activity, Boolean logged) {
         this.libri = libri;
         this.activity = activity;
+        this.logged = logged;
     }
 
     @Override
@@ -53,8 +56,21 @@ public class LibriAdapter extends BaseAdapter {
         TextView editore_textView = (TextView) view.findViewById(R.id.editore);
         TextView npezziTextView = (TextView) view.findViewById(R.id.npezzi);
 
+        Button prenota = (Button) view.findViewById(R.id.prenota_button);
+
+        if (logged) {
+            prenota.setClickable(true);
+            prenota.setAlpha(1);
+        } else {
+            prenota.setClickable(false);
+            prenota.setAlpha((float) 0.2);
+        }
+
         if (libro.getTitolo().equals("Inferno")) {
             imageView.setBackgroundResource(R.drawable.inferno);
+
+            //} else if () {
+
         } else {
             imageView.setBackgroundResource(R.mipmap.ic_launcher);
         }

@@ -26,6 +26,10 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".Activities.CatalogoActivity" />
         <activity android:name=".Activities.BenvenutoCliente" />
+        <activity
+            android:name=".Activities.PrestitiActivity"
+            android:label="@string/title_activity_prestiti"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

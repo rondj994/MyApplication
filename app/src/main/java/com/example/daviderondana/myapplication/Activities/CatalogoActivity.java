@@ -55,7 +55,7 @@ public class CatalogoActivity extends AppCompatActivity {
                         try {
                             Catalogo catalogo = mapper.readValue(response, Catalogo.class);
 
-                            LibriAdapter libriAdapter = new LibriAdapter(catalogo.getLibri(), activity);
+                            LibriAdapter libriAdapter = new LibriAdapter(catalogo.getLibri(), activity, staticData.isLogged());
 
                             ListView listView = (ListView) findViewById(R.id.lista_libri);
                             listView.setAdapter(libriAdapter);

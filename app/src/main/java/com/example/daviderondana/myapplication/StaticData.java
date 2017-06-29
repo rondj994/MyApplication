@@ -5,9 +5,8 @@ import com.example.daviderondana.myapplication.Model.Utente;
 /**
  * Created by france193 on 27/06/2017.
  */
-
 public class StaticData {
-    private static final String ip = "192.168.0.116";
+    private static final String ip = "172.20.242.187";
 
     private static final StaticData ourInstance = new StaticData();
 
