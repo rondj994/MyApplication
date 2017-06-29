@@ -76,7 +76,13 @@ public class PrestitiAdapter extends BaseAdapter {
 
         idl.setText(prestiti.get(i).getIdl());
         data_inizio.setText(prestiti.get(i).getDataini());
-        data_fine.setText(prestiti.get(i).getDatafine());
+
+        if (prestiti.get(i).getDatafine() == null) {
+            data_fine.setText("Non ancora restituito");
+        } else {
+            data_fine.setText(prestiti.get(i).getDatafine());
+        }
+
 
         return view;
     }
