@@ -5,9 +5,10 @@
     android:layout_margin="10dp"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -26,27 +27,31 @@
             android:orientation="vertical"
             android:weightSum="1">
 
+            <!--spazio per il titolo del libro -->
             <TextView
                 android:id="@+id/titolo_libro"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.25"
+                android:layout_weight="0.3"
                 android:textSize="20sp" />
 
+            <!--spazio per l'autore -->
             <TextView
                 android:id="@+id/autore"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.18"
                 android:textSize="20sp" />
 
+            <!--spazio per l'editore -->
             <TextView
                 android:id="@+id/editore"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.15"
+                android:layout_weight="0.14"
                 android:textSize="20sp" />
 
+            <!--spazio per il npezzi -->
             <TextView
                 android:id="@+id/npezzi"
                 android:layout_width="match_parent"
@@ -54,6 +59,7 @@
                 android:layout_weight="0.15"
                 android:textSize="20sp" />
 
+            <!--tasto prenota nel catalogo-->
             <Button
                 android:id="@+id/prenota_button"
                 android:layout_width="match_parent"

@@ -41,6 +41,8 @@ public class CatalogoActivity extends AppCompatActivity {
 
         activity = this;
         staticData = StaticData.getInstance();
+        setTitle("Catalogo");
+
 
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 

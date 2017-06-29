@@ -66,10 +66,19 @@ public class LibriAdapter extends BaseAdapter {
             prenota.setAlpha((float) 0.2);
         }
 
+        //ciclo in cui assegno le immagini al catalogo per ciascun libro
+
         if (libro.getTitolo().equals("Inferno")) {
             imageView.setBackgroundResource(R.drawable.inferno);
 
-            //} else if () {
+            }else if (libro.getTitolo().equals("Alchimista")) {
+                imageView.setBackgroundResource(R.drawable.alchimista);
+            }else if (libro.getTitolo().equals("Harry Potter e la Pietra Filosofale")){
+                imageView.setBackgroundResource(R.drawable.harrypotter);
+            }else if (libro.getTitolo().equals("Il Monte Analogo")){
+                imageView.setBackgroundResource(R.drawable.monteanalogo);
+            }else if (libro.getTitolo().equals("Il piccolo principe")){
+                imageView.setBackgroundResource(R.drawable.piccoloprincipe);
 
         } else {
             imageView.setBackgroundResource(R.mipmap.ic_launcher);

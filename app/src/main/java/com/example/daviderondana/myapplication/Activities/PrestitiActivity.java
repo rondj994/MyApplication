@@ -17,6 +17,9 @@ public class PrestitiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prestiti);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setTitle("Prestiti");
+
     }
 
 }

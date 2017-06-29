@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
         staticData = StaticData.getInstance();
 
-        setTitle("Biblioteca");
+        setTitle("Effettua il Login");
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
