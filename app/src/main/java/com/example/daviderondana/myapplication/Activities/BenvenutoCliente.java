@@ -13,7 +13,6 @@ import com.example.daviderondana.myapplication.R;
 import com.example.daviderondana.myapplication.StaticData;
 
 public class BenvenutoCliente extends AppCompatActivity {
-
     private Context context;
     private Activity activity;
     private StaticData staticData;

@@ -3,12 +3,9 @@ package com.example.daviderondana.myapplication.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,9 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.daviderondana.myapplication.Adapter.LibriAdapter;
 import com.example.daviderondana.myapplication.Adapter.PrestitiAdapter;
-import com.example.daviderondana.myapplication.Model.Catalogo;
 import com.example.daviderondana.myapplication.Model.Prestiti;
 import com.example.daviderondana.myapplication.R;
 import com.example.daviderondana.myapplication.StaticData;
@@ -45,8 +40,10 @@ public class PrestitiActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setTitle("Prestiti");
+        //this line shows back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setTitle("Prestiti");
 
 
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());

@@ -1,12 +1,14 @@
 package com.example.daviderondana.myapplication.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -36,6 +38,9 @@ import java.util.Map;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    private Activity activity;
+    private Context context;
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -53,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        context = getApplicationContext();
+        activity = this;
+
+        //this line shows back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         staticData = StaticData.getInstance();
 
@@ -157,6 +168,15 @@ public class LoginActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(context, MainActivity.class);
+            activity.startActivity(intent);
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }
 

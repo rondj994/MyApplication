@@ -43,7 +43,6 @@ public class CatalogoActivity extends AppCompatActivity {
         staticData = StaticData.getInstance();
         setTitle("Catalogo");
 
-
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         String url = "http://" + staticData.getIp() + ":8080/WebApplication1/biblioteca";
