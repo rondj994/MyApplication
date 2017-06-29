@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import java.util.Map;
 public class CatalogoActivity extends AppCompatActivity {
     private Activity activity;
     private StaticData staticData;
+    private Context context;
 
     //siamo nel CATALOGO
     @Override
@@ -40,10 +42,13 @@ public class CatalogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo);
 
+        context = getApplicationContext();
         activity = this;
         staticData = StaticData.getInstance();
         setTitle("Catalogo");
 
+        //freccia del ritorno alla home nella toolbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //volley libreria gestita da google per fare richieste http da android
         //instanzio coda di richieste http
@@ -63,7 +68,7 @@ public class CatalogoActivity extends AppCompatActivity {
                         try {
                             Catalogo catalogo = mapper.readValue(response, Catalogo.class);
 
-                            LibriAdapter libriAdapter = new LibriAdapter(catalogo.getLibri(), activity, staticData.isLogged());
+                            LibriAdapter libriAdapter = new LibriAdapter(catalogo.getLibri(), activity, staticData.isLogged(), getApplicationContext());
 
                             ListView listView = (ListView) findViewById(R.id.lista_libri);
                             listView.setAdapter(libriAdapter);
@@ -100,5 +105,28 @@ public class CatalogoActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent;
+
+            if (staticData.isLogged()) {
+                intent = new Intent(context, BenvenutoCliente.class);
+            } else {
+                intent = new Intent(context, MainActivity.class);
+            }
+
+            // creo un bundle per passare dati tra 2 activity
+            Bundle bundle = new Bundle();
+            // metto l'oggetto che voglio passare dentro al bundle
+            bundle.putSerializable("utente", staticData.getUtente());
+            // inserisco il bundle dentro all'intent
+            intent.putExtra("utente_loggato", bundle);
+
+            activity.startActivity(intent);
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }

@@ -6,7 +6,7 @@ import com.example.daviderondana.myapplication.Model.Utente;
 public class StaticData {
     //setto l'ip che utilizzo per mandarlo in Run
     //deve essere lo stesso con il progetto di NetBeans e va modificato ogni volta che cambio rete
-    private static final String ip = "172.20.10.2";
+    private static final String ip = "192.168.0.116";
 
     //si istanzia appena avviata l'applicazione
     private static final StaticData ourInstance = new StaticData();

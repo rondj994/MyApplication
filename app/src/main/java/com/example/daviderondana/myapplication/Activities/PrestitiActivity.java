@@ -2,10 +2,12 @@ package com.example.daviderondana.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import java.util.Map;
 public class PrestitiActivity extends AppCompatActivity {
     private StaticData staticData;
     private Activity activity;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +38,13 @@ public class PrestitiActivity extends AppCompatActivity {
 
         staticData = StaticData.getInstance();
         activity = this;
+        context = getApplicationContext();
 
         setContentView(R.layout.activity_prestiti);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //this line shows back button
+        //freccia del ritorno alla home nella toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle("Prestiti");
@@ -59,7 +63,7 @@ public class PrestitiActivity extends AppCompatActivity {
                         try {
                             Prestiti prestiti = mapper.readValue(response, Prestiti.class);
 
-                            PrestitiAdapter prestitiAdapter = new PrestitiAdapter(prestiti.getPrestiti(), activity, staticData.isLogged());
+                            PrestitiAdapter prestitiAdapter = new PrestitiAdapter(prestiti.getPrestiti(), activity, staticData.isLogged(), getApplicationContext());
 
                             ListView listView = (ListView) findViewById(R.id.lista_prestiti);
                             listView.setAdapter(prestitiAdapter);
@@ -97,4 +101,20 @@ public class PrestitiActivity extends AppCompatActivity {
         toast.show();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(context, BenvenutoCliente.class);
+
+            // creo un bundle per passare dati tra 2 activity
+            Bundle bundle = new Bundle();
+            // metto l'oggetto che voglio passare dentro al bundle
+            bundle.putSerializable("utente", staticData.getUtente());
+            // inserisco il bundle dentro all'intent
+            intent.putExtra("utente_loggato", bundle);
+
+            activity.startActivity(intent);
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
 }
