@@ -2,14 +2,16 @@ package com.example.daviderondana.myapplication;
 
 import com.example.daviderondana.myapplication.Model.Utente;
 
-/**
- * Created by france193 on 27/06/2017.
- */
-public class StaticData {
-    private static final String ip = "172.20.242.187";
 
+public class StaticData {
+    //setto l'ip che utilizzo per mandarlo in Run
+    //deve essere lo stesso con il progetto di NetBeans e va modificato ogni volta che cambio rete
+    private static final String ip = "172.20.10.2";
+
+    //si istanzia appena avviata l'applicazione
     private static final StaticData ourInstance = new StaticData();
 
+    //
     public static StaticData getInstance() {
         return ourInstance;
     }

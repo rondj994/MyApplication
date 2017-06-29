@@ -13,9 +13,8 @@ import com.example.daviderondana.myapplication.R;
 
 import java.util.List;
 
-/**
- * Created by france193 on 29/06/2017.
- */
+//ADAPTER serve per visualizzare una lista di elementi nella list view
+
 public class PrestitiAdapter extends BaseAdapter {
     private List<Prestito> prestiti;
     private Activity activity;
@@ -27,11 +26,13 @@ public class PrestitiAdapter extends BaseAdapter {
         this.logged = logged;
     }
 
+    //quante celle devo creare?
     @Override
     public int getCount() {
         return prestiti.size();
     }
 
+    //associa le celle alla posizione dell'elemento nella lista
     @Override
     public Object getItem(int i) {
         return prestiti.get(i);
@@ -49,14 +50,16 @@ public class PrestitiAdapter extends BaseAdapter {
             view = activity.getLayoutInflater().inflate(R.layout.layout_prestito, viewGroup, false);
         }
 
-        ImageView copertina = (ImageView) view.findViewById(R.id.icona_libro);
 
+        //prototipo del layout, riempito
+        ImageView copertina = (ImageView) view.findViewById(R.id.icona_libro);
         TextView idl = (TextView) view.findViewById(R.id.idu);
         TextView data_inizio = (TextView) view.findViewById(R.id.data_inizio);
         TextView data_fine = (TextView) view.findViewById(R.id.data_fine);
 
         Button restituisci = (Button) view.findViewById(R.id.restituisci_button);
 
+        //controlla se sono loggeto
         if (logged) {
             restituisci.setClickable(true);
             restituisci.setAlpha(1);
@@ -65,14 +68,26 @@ public class PrestitiAdapter extends BaseAdapter {
             restituisci.setAlpha((float) 0.2);
         }
 
-        if (prestiti.get(i).equals("Inferno")) {
+        //ciclo in cui assegno le immagini al catalogo per ciascun libro
+
+        if (prestiti.get(i).getIdl().equals("Inferno")) {
             copertina.setBackgroundResource(R.drawable.inferno);
 
-            //} else if () {
+        }else if (prestiti.get(i).getIdl().equals("Alchimista")) {
+            copertina.setBackgroundResource(R.drawable.alchimista);
+        }else if (prestiti.get(i).getIdl().equals("Harry Potter e la Pietra Filosofale")){
+            copertina.setBackgroundResource(R.drawable.harrypotter);
+        }else if (prestiti.get(i).getIdl().equals("Il Monte Analogo")){
+            copertina.setBackgroundResource(R.drawable.monteanalogo);
+        }else if (prestiti.get(i).getIdl().equals("Il piccolo principe")){
+            copertina.setBackgroundResource(R.drawable.piccoloprincipe);
 
         } else {
             copertina.setBackgroundResource(R.mipmap.ic_launcher);
         }
+
+
+        //prendo da database la data inizio prestito e la data fine e gestisco se prestito ancora attivo
 
         idl.setText(prestiti.get(i).getIdl());
         data_inizio.setText(prestiti.get(i).getDataini());

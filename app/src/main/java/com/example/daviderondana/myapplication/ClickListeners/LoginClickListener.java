@@ -13,6 +13,9 @@ public class LoginClickListener implements View.OnClickListener {
         this.activity = activity;
     }
 
+
+    //associo il click alla activity
+
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(activity, LoginActivity.class);

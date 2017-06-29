@@ -34,6 +34,7 @@ public class CatalogoActivity extends AppCompatActivity {
     private Activity activity;
     private StaticData staticData;
 
+    //siamo nel CATALOGO
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +44,19 @@ public class CatalogoActivity extends AppCompatActivity {
         staticData = StaticData.getInstance();
         setTitle("Catalogo");
 
+
+        //volley libreria gestita da google per fare richieste http da android
+        //instanzio coda di richieste http
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
+        //mi costruisco l'URL
         String url = "http://" + staticData.getIp() + ":8080/WebApplication1/biblioteca";
 
+        //creo la richiesta
         StringRequest postRequest = new StringRequest(
-                Request.Method.POST, url,
-                new Response.Listener<String>() {
+                Request.Method.POST, //primo paremetro tipo richiesta
+                url, // secondo parametro url
+                new Response.Listener<String>() { //se va a buon fine
                     @Override
                     public void onResponse(String response) {
                         ObjectMapper mapper = new ObjectMapper();
@@ -66,7 +73,7 @@ public class CatalogoActivity extends AppCompatActivity {
                         }
                     }
                 },
-                new Response.ErrorListener() {
+                new Response.ErrorListener() { //se c'è errore
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         toast("Error retrieving catalog ");
@@ -74,10 +81,11 @@ public class CatalogoActivity extends AppCompatActivity {
                     }
                 }
         ) {
+            //inserire i parametri nella richiesta
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("action", "catalogo");
+                params.put("action", "catalogo"); //specifico action
                 return params;
             }
         };
@@ -85,6 +93,8 @@ public class CatalogoActivity extends AppCompatActivity {
         queue.add(postRequest);
     }
 
+
+    //metodo per visualizzare i messaggi a schermo come popup
     public void toast(String text) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;

@@ -33,18 +33,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A login screen that offers login via email/password.
- */
 public class LoginActivity extends AppCompatActivity {
 
     private Activity activity;
     private Context context;
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
+
 
     private StaticData staticData;
 
@@ -62,16 +56,18 @@ public class LoginActivity extends AppCompatActivity {
         context = getApplicationContext();
         activity = this;
 
-        //this line shows back button
+
+        //freccia del ritorno alla home nella toolbar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         staticData = StaticData.getInstance();
 
         setTitle("Effettua il Login");
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-        StrictMode.setThreadPolicy(policy);
+        //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //StrictMode.setThreadPolicy(policy);
+
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -80,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {  //
                     attemptLogin();
                     return true;
                 }
@@ -99,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void attemptLogin() {
         // Store values at the time of the login attempt.
-        mEmailView.setText("Rondana");
-        mPasswordView.setText("Davide");
+       // mEmailView.setText("Rondana");
+        //mPasswordView.setText("Davide");
 
         username = mEmailView.getText().toString().trim();
         password = mPasswordView.getText().toString().trim();
@@ -170,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         toast.show();
     }
 
+    //
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {

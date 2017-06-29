@@ -49,7 +49,7 @@ public class LibriAdapter extends BaseAdapter {
 
         Libro libro = libri.get(i);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.icona);
+        ImageView imageView = (ImageView) view.findViewById(R.id.icona); //icona e un id che ho nel layout del libro
 
         TextView titolo_textView = (TextView) view.findViewById(R.id.titolo_libro);
         TextView autore_textView = (TextView) view.findViewById(R.id.autore);
@@ -58,6 +58,7 @@ public class LibriAdapter extends BaseAdapter {
 
         Button prenota = (Button) view.findViewById(R.id.prenota_button);
 
+        //se sono loggato attivo il tasto prenota altrimenti no
         if (logged) {
             prenota.setClickable(true);
             prenota.setAlpha(1);
@@ -84,6 +85,7 @@ public class LibriAdapter extends BaseAdapter {
             imageView.setBackgroundResource(R.mipmap.ic_launcher);
         }
 
+        //setto il testo
         titolo_textView.setText(libro.getTitolo());
         autore_textView.setText(libro.getAutori());
         editore_textView.setText(libro.getEditore());

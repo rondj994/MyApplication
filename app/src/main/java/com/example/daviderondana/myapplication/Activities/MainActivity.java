@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Benvenuti nella Biblioteca");
 
-
         activity = this;
 
         // identifico il bottone dal layout
