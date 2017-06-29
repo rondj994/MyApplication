@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                             staticData.setLogged(true);
+                            staticData.setUtente(user);
 
                             // cambio activity
                             startActivity(intent);

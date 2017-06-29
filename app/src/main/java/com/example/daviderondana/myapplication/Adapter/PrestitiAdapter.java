@@ -57,7 +57,26 @@ public class PrestitiAdapter extends BaseAdapter {
 
         Button restituisci = (Button) view.findViewById(R.id.restituisci_button);
 
+        if (logged) {
+            restituisci.setClickable(true);
+            restituisci.setAlpha(1);
+        } else {
+            restituisci.setClickable(false);
+            restituisci.setAlpha((float) 0.2);
+        }
 
+        if (prestiti.get(i).equals("Inferno")) {
+            copertina.setBackgroundResource(R.drawable.inferno);
+
+            //} else if () {
+
+        } else {
+            copertina.setBackgroundResource(R.mipmap.ic_launcher);
+        }
+
+        idl.setText(prestiti.get(i).getIdl());
+        data_inizio.setText(prestiti.get(i).getDataini());
+        data_fine.setText(prestiti.get(i).getDatafine());
 
         return view;
     }

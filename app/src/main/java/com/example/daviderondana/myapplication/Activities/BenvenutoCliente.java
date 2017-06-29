@@ -58,6 +58,15 @@ public class BenvenutoCliente extends AppCompatActivity {
                 activity.startActivity(intent);
             }
         });
+
+        Button mieiPrestitiButton = (Button) findViewById(R.id.miei_prestiti_button);
+        mieiPrestitiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PrestitiActivity.class);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
