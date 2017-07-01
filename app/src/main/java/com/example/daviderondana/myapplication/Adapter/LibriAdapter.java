@@ -120,10 +120,14 @@ public class LibriAdapter extends BaseAdapter {
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    if (libro.getNpezzi() == 0) {
-                                        toast("Libro non più disponibile");
+                                    if (logged) {
+                                        if (libro.getNpezzi() == 0) {
+                                            toast("Libro non più disponibile");
+                                        } else {
+                                            toast("Libro già preso in prestito");
+                                        }
                                     } else {
-                                        toast("Libro già preso in prestito");
+                                        toast("Per richiedere un libro è richiesto il login");
                                     }
                                 }
                             }
