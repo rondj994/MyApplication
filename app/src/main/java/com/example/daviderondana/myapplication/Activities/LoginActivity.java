@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     private Context context;
 
 
-
     private StaticData staticData;
 
     // UI references.
@@ -95,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void attemptLogin() {
         // Store values at the time of the login attempt.
-        mEmailView.setText("Rondana");
-        mPasswordView.setText("Davide");
+        //mEmailView.setText("Rondana");
+        //mPasswordView.setText("Davide");
 
         username = mEmailView.getText().toString().trim();
         password = mPasswordView.getText().toString().trim();

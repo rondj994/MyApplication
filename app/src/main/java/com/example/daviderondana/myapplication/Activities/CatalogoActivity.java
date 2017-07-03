@@ -18,17 +18,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.daviderondana.myapplication.Adapter.LibriAdapter;
 import com.example.daviderondana.myapplication.Model.Catalogo;
-import com.example.daviderondana.myapplication.Model.Libro;
-import com.example.daviderondana.myapplication.Model.Utente;
 import com.example.daviderondana.myapplication.R;
 import com.example.daviderondana.myapplication.StaticData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CatalogoActivity extends AppCompatActivity {

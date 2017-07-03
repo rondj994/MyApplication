@@ -3,8 +3,6 @@ package com.example.daviderondana.myapplication.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,18 +17,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.daviderondana.myapplication.Activities.BenvenutoCliente;
 import com.example.daviderondana.myapplication.Activities.CatalogoActivity;
-import com.example.daviderondana.myapplication.Activities.LoginActivity;
-import com.example.daviderondana.myapplication.Activities.PrestitiActivity;
-import com.example.daviderondana.myapplication.Model.Catalogo;
 import com.example.daviderondana.myapplication.Model.Libro;
-import com.example.daviderondana.myapplication.Model.Utente;
 import com.example.daviderondana.myapplication.R;
 import com.example.daviderondana.myapplication.StaticData;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +32,6 @@ public class LibriAdapter extends BaseAdapter {
     private Boolean logged;
     private Context context;
     private StaticData staticData;
-    private BaseAdapter baseAdapter = this;
 
     public LibriAdapter(List<Libro> libri, Activity activity, Boolean logged, Context context) {
         this.libri = libri;
@@ -123,8 +113,6 @@ public class LibriAdapter extends BaseAdapter {
                                     if (logged) {
                                         if (libro.getNpezzi() == 0) {
                                             toast("Libro non più disponibile");
-                                        } else {
-                                            toast("Libro già preso in prestito");
                                         }
                                     } else {
                                         toast("Per richiedere un libro è richiesto il login");

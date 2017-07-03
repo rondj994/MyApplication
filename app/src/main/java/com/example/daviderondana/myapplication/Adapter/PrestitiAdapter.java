@@ -150,11 +150,14 @@ public class PrestitiAdapter extends BaseAdapter {
                             params.put("action", "restituisci_libro");
                             params.put("username", staticData.getUtente().getAccount());
                             params.put("titolo", prestiti.get(i).getIdl());
+                            params.put("data_ini", prestiti.get(i).getDataini().toString());
                             return params;
                         }
                     };
 
-                    queue.add(postRequest);
+                    if (prestiti.get(i).getDatafine() == null) {
+                        queue.add(postRequest);
+                    }
                 }
             }
         });
